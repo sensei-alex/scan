@@ -12,16 +12,22 @@
       <button id="link">Live demo</button>
     </main>
     <script>
-      fetch(
-        "https://raw.githubusercontent.com/sensei-alex/scan/refs/heads/main/scan.html",
-      )
-        .then((response) => response.text())
-        .then((html) => {
-          link.addEventListener("click", () => {
-            const tab = window.open();
-            tab.document.body.innerHTML = html;
-          });
-        });
+      link.addEventListener("click", () => {
+        const tab = window.open();
+        const doc = tab.document;
+
+        const heading = doc.createElement("h1");
+        heading.textContent = "LAB Scanner";
+        doc.body.appendChild(heading);
+
+        const library = doc.createElement("script");
+        library.src = "https://snlx.net/scan/main.js";
+        doc.body.appendChild(library);
+
+        const script = doc.createElement("script");
+        script.src = "https://snlx.net/scan/demo.js";
+        doc.body.appendChild(script);
+      });
     </script>
   </body>
 </html>
