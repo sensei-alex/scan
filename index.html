@@ -8,19 +8,36 @@
   </head>
   <body>
     <main class="container">
-      <h1>LAB Scanner</h1>
-      <p id="dragdrop" draggable="true">Live demo (drag into a new tab)</p>
+      <h1>snlx.net / scan</h1>
+      <p>
+        &gt; A simple js library that helps you find devices on your network
+      </p>
+      <p>Detects:</p>
+      <ul>
+        <li>CircuitPython boards</li>
+        <li>Routers</li>
+      </ul>
+
+      <h2>Limitations</h2>
+      <ul>
+        <li>
+          Does not work if your site uses HTTPS. You can get around that by
+          making the scanner downloadable, for example
+        </li>
+        <li>
+          If the device doesn't want you to connect, this library will not help
+          you. It only scans port 80 and if it gets back a CORS error it does
+          nothing about it
+        </li>
+      </ul>
+
+      <p>
+        <a href="https://snlx.net/scan/scan.html" download>Demo</a>
+        <br />
+        <a href="https://github.com/sensei-alex/scan/blob/main/index.html"
+          >Usage example</a
+        >
+      </p>
     </main>
-    <script>
-      fetch(
-        "https://raw.githubusercontent.com/sensei-alex/scan/refs/heads/main/scan.html",
-      )
-        .then((response) => response.text())
-        .then((html) => {
-          dragdrop.addEventListener("dragstart", (event) => {
-            event.dataTransfer.setData("text/plain", "data:text/html," + html);
-          });
-        });
-    </script>
   </body>
 </html>
