@@ -8,7 +8,22 @@ Detects:
 [Usage example](https://github.com/sensei-alex/scan/blob/main/scan.html)
 [Live demo](https://snlx.net/scan/scan.html)
 
-## Limitations
+## Security explainer
 
-- Does not work if your site uses HTTPS. You can get around that by making the scanner downloadable, for example
-- If the device doesn't want you to connect, this library will not help you. It only scans port 80 and if it gets back a CORS error it does nothing about it
+The traffic on your local network can't (and probably shouldn't) be encrypted.
+The connection to most sites is.
+
+This library gets downloaded to your browser and tries to establish regular unencrypted HTTP connections to your other devices.
+The browser assumes that if a connection is unencrypted, there can be a third party watching it.
+Since this tool is connecting from a device on your local network to another device on your local network, the only way someone could
+be watching you is if they were on your local network too. The browser can't know that, so it tries to keep everything between your machine
+and the website's (this library's) server. You know that, so this can be safely ignored.
+
+To allow the browser to make unencrypted connections:
+
+- click in the top left corner on the settings icon
+- go to Site settings
+- Allow Insecure content
+- return to the site and click Reload
+
+![chrome screenshots](scan-security.svg)

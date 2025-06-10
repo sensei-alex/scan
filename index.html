@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="dark" />
+    <script src="https://snlx.net/scan/main.js"></script>
     <title>scan</title>
   </head>
   <body>
@@ -18,26 +19,32 @@
         <li>Routers</li>
       </ul>
 
-      <h2>Limitations</h2>
-      <ul>
-        <li>
-          Does not work if your site uses HTTPS. You can get around that by
-          making the scanner downloadable, for example
-        </li>
-        <li>
-          If the device doesn't want you to connect, this library will not help
-          you. It only scans port 80 and if it gets back a CORS error it does
-          nothing about it
-        </li>
-      </ul>
-
+      <h2>Security explainer</h2>
       <p>
-        <a href="https://snlx.net/scan/scan.html" download>Demo</a>
-        <br />
+        This library relies on HTTP being allowed for the site. If you're unsure
+        what that means, check out
+        <a href="https://github.com/sensei-alex/scan">the readme</a>.
+      </p>
+      <p>
         <a href="https://github.com/sensei-alex/scan/blob/main/index.html"
           >Usage example</a
         >
       </p>
+      <button id="run">Scan</button>
     </main>
+    <script>
+      run.addEventListener("click", async () => {
+        const devices = await scan(notify);
+
+        notify(JSON.stringify(devices, null, 4));
+      });
+
+      function notify(message) {
+        const pre = document.createElement("pre");
+        pre.textContent = message;
+
+        document.body.appendChild(pre);
+      }
+    </script>
   </body>
 </html>
