@@ -5,4 +5,4 @@ Detects:
 - CircuitPython boards
 - Routers
 
-[Usage example](https://github.com/sensei-alex/scan/blob/main/index.html)
+[Usage example](https://github.com/sensei-alex/scan/blob/main/scan.html)
