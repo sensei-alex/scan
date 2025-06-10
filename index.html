@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>scan</title>
+  </head>
+  <body>
+    <main class="container">
+      <h1>LAB Scanner</h1>
+      <button id="link">Live demo</button>
+    </main>
+    <script>
+      fetch(
+        "https://raw.githubusercontent.com/sensei-alex/scan/refs/heads/main/scan.html",
+      )
+        .then((response) => response.text())
+        .then((html) => {
+          link.addEventListener("click", () => {
+            const tab = window.open();
+            tab.document.body.innerHTML = html;
+          });
+        });
+    </script>
+  </body>
+</html>
