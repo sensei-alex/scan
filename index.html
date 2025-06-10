@@ -9,7 +9,7 @@
   <body>
     <main class="container">
       <h1>LAB Scanner</h1>
-      <button id="link">Live demo</button>
+      <p id="dragdrop" draggable="true">Live demo (drag into a new tab)</p>
     </main>
     <script>
       fetch(
@@ -17,9 +17,8 @@
       )
         .then((response) => response.text())
         .then((html) => {
-          link.addEventListener("click", () => {
-            const tab = window.open();
-            tab.document.body.innerHTML = html;
+          dragdrop.addEventListener("dragstart", (event) => {
+            event.dataTransfer.setData("text/plain", "data:text/html," + html);
           });
         });
     </script>
