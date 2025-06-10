@@ -27,7 +27,13 @@ async function scan(notify) {
   async function identify(ip) {
     const circuitpy = await fetch("http://" + ip + "/cp/version.json").then(
       async (response) => {
-        return { ...(await response.json()), type: "circuitpy" };
+        const json = await response.json().catch(() => null);
+
+        if (!json) {
+          return false;
+        }
+
+        return { ...json, type: "circuitpy" };
       },
       () => false,
     );
