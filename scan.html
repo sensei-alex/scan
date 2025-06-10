@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="dark" />
+    <script>
+      alert("loaded in head")
+    </script>
     <script src="https://raw.githubusercontent.com/sensei-alex/scan/refs/heads/main/main.js"></script>
     <title>scan</title>
   </head>
@@ -24,7 +27,7 @@
       <button id="run">Scan</button>
     </main>
     <script>
-      console.log("Hello world?")
+      alert("Hello world?")
 
       run.addEventListener("click", async () => {
         const devices = await scan(notify);
